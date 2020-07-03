@@ -1,0 +1,63 @@
+extends ../layout/index
+block slider
+    .slider 
+        .h1 Rio de Janeiro
+        em Aventura
+
+
+block contenido
+    main.container.mt-5
+        h2.text-center.mb-5 Sobre nosotros
+        .row.mb-5
+            .col-md-6
+                p But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself
+
+                p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+
+            .col-md-6
+                img(src="/img/inicio_nosotros.jpg", alt="", class="img-fluid")
+        h2.text-center.mb-5 Proximos Viajes
+        .row.proximos-viajes
+            each viaje in viajes
+                .col-md-4.col-md-4.mb-4     
+                    .card
+                        img(src=`img/destinos_${viaje.imagen}.jpg`, class="img-fluid")
+                        .card-body
+                            h2=viaje.titulo
+                            p   
+                                i.fas.fa-calendar-alt
+                                | #{viaje.fecha_ida} - #{viaje.fecha_vuelta}
+
+                            p   
+                                i.fas.fa-dollar-sign
+                                | #{viaje.precio}
+
+                            p= viaje.descripcion.substr(0,100)
+                            a(href=`viajes/${viaje.id}`, class="btn btn-success btn-block") Mas información
+
+    
+    .descuento
+        .container
+            .row
+                .col-md-6
+                    .contenido
+                        h3 5% de Descuento
+                        p.titulo Viaje a Canada
+                        p.fecha 20 de marzo de 2020 - 28 de Marzo de 2020
+                        p.precio $2,500 USD
+
+    .container
+        h2.text-center.my-5 Testimoniales
+        .row
+            .col-md-12 
+                blockquote.text-center Lee Sobre nuestros Clientes y sus experiencias
+                .row.testimoniales
+                    each testimonial in testimoniales
+                        .col-md-6.col-lg-4.mb-4 
+                            .card
+                                .card-body
+                                    blockquote.blockquote
+                                    p.mb-0
+                                        | #{testimonial.mensaje}
+                                    footer.blockquote-footer
+                                        | #{testimonial.nombre}
